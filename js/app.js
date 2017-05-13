@@ -35,8 +35,8 @@ Enemy.prototype.update = function(dt) {
 
     // resets the enemy position if it leaves the canvas
     if (this.x > 510) {
-    this.x = -80;
-  }
+        this.x = -80;
+    }
 
     this.checkCollision();
 };
@@ -44,18 +44,28 @@ Enemy.prototype.update = function(dt) {
 //checks for collisions between the enemies & the player
 //credit: based on https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
 Enemy.prototype.checkCollision = function() {
-    var rect1 = {x: this.x, y: this.y, width: 50, height: 50};
-    var rect2 = {x: player.x, y: player.y, width: 50, height: 50};
+    var rect1 = {
+        x: this.x,
+        y: this.y,
+        width: 50,
+        height: 50
+    };
+    var rect2 = {
+        x: player.x,
+        y: player.y,
+        width: 50,
+        height: 50
+    };
 
     if (rect1.x < rect2.x + rect2.width &&
-       rect1.x + rect1.width > rect2.x &&
-       rect1.y < rect2.y + rect2.height &&
-       rect1.height + rect1.y > rect2.y) {
+        rect1.x + rect1.width > rect2.x &&
+        rect1.y < rect2.y + rect2.height &&
+        rect1.height + rect1.y > rect2.y) {
         // collision detected!
         //console.log("collision");
         player.x = 200;
         player.y = 400;
-}
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -87,32 +97,32 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(move) {
     //left arrow key moves player to the left, provided the player is within the canvas
     if (move === 'left' && this.x > -2) {
-      //console.log('left');
-      this.x -= 101;
+        //console.log('left');
+        this.x -= 101;
     }
 
     //right arrow key moves player to the right, provided the player is within the canvas
     if (move === 'right' && this.x < 402) {
-      //console.log('right');
-      this.x += 101;
+        //console.log('right');
+        this.x += 101;
     }
 
     //down arrow key moves player down, provided the player is within the canvas
     if (move === 'down' && this.y < 400) {
-      //console.log('down');
-      this.y += 90;
+        //console.log('down');
+        this.y += 90;
     }
 
     // up arrow key moves the player up, provided the player is within the canvas and hasn't reached the top
     if (move === 'up' && this.y > -49) {
-      //console.log('up');
-      this.y -= 90;
+        //console.log('up');
+        this.y -= 90;
     }
 
     //resets the position of the player if the player reaches the top of the canvas
     if (move === 'up' && this.y < 40) {
-      this.x = 200;
-      this.y = 400;
+        this.x = 200;
+        this.y = 400;
     }
 
 
